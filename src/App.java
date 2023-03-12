@@ -5,10 +5,18 @@ import java.awt.event.ActionListener;
 
 
 public class App extends JFrame {
+
+    public static void main(String[] args) {
+        new App();
+    }
+
+    
     private JLabel userLabel, passwordLabel;
     private JTextField userField;
     private JPasswordField passwordField;
     private JButton emojiButton;
+    private int loginAttempts = 0;
+    private final int MAX_LOGIN_ATTEMPTS = 3;
 
     public App() {
         // Configurar la ventana
@@ -43,7 +51,7 @@ public class App extends JFrame {
         panel.add(passwordField);
         panel.add(new JLabel(""));
         panel.add(emojiButton);
-        panel.setBackground(Color.ORANGE);
+        panel.setBackground(Color.white);
 
         // Agregar el panel a la ventana
         getContentPane().add(panel);
@@ -54,15 +62,19 @@ public class App extends JFrame {
         String user = userField.getText();
         String password = new String(passwordField.getPassword());
 
-        // Verificar las credenciales
-        if (user.equals("usuario") && password.equals("contraseña")) {
-            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso");
+       // Verificar las credenciales
+       if (user.equals("usuario") && password.equals("contraseña")) {
+        JOptionPane.showMessageDialog(this, "Iniciando Seio");
+        dispose(); // cerrar la ventana
+    } else {
+        loginAttempts++;
+        if (loginAttempts == MAX_LOGIN_ATTEMPTS) {
+            JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. La aplicación se cerrará.");
+            dispose(); // cerrar la ventana
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
         }
     }
-
-    public static void main(String[] args) {
-        new App();
-    }
+}
+    
 }
