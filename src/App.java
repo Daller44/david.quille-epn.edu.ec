@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class App extends JFrame {
@@ -59,24 +61,41 @@ public class App extends JFrame {
     }
 
     private void login() {
-    String user = userField.getText();
-    String password = new String(passwordField.getPassword());
-
-    // Verificar las credenciales
-    if ((user.equals("david.quille@epn.edu.ec") && password.equals("1726718875")) ||
-            (user.equals("profe") && password.equals("1234"))) {
-        JOptionPane.showMessageDialog(this, "Iniciando Seion");
-        dispose(); // cerrar la ventana
-    } else {
-        loginAttempts++;
-        if (loginAttempts == MAX_LOGIN_ATTEMPTS) {
-            JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. La aplicación se cerrará.");
+        String user = userField.getText();
+        String password = new String(passwordField.getPassword());
+    
+        // Encriptar la contraseña por md5
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] hash = md.digest();
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            password = hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    
+        // Verificar las credenciales encriptadas
+        if ((user.equals("david.quille@epn.edu.ec") && password.equals("9f9d51bc70ef21ca5c14f307980a29d8")) ||
+                (user.equals("profe") && password.equals("81dc9bdb52d04dc20036dbd8313ed055"))) {
+            JOptionPane.showMessageDialog(this, "Iniciando Sesión");
             dispose(); // cerrar la ventana
         } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+            loginAttempts++;
+            if (loginAttempts == MAX_LOGIN_ATTEMPTS) {
+                JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. La aplicación se cerrará.");
+                dispose(); // cerrar la ventana
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+            }
         }
     }
-}
-
     
 }
