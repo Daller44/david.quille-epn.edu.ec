@@ -6,7 +6,7 @@ Version 1.0
 */
 CREATE TABLE IF NOT EXISTS USUARIOS
 (    USUARIOS             VARCHAR(20) NOT NULL
-    ,CONTRASENA        VARCHAR(100)NOT NULL
+    ,CONTRASENA        VARCHAR(50)NOT NULL
 );
 ------------------------------------------------------------------------
 INSERT INTO USUARIOS   (USUARIOS, CONTRASENA )
