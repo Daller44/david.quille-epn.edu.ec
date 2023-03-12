@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class App extends JFrame {
     private JLabel userLabel, passwordLabel;
     private JTextField userField;
@@ -16,17 +17,16 @@ public class App extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        // Agregar ícono a la ventana
-    
+
 
         // Configurar los componentes de la interfaz gráfica
         userLabel = new JLabel("Usuario:");
         passwordLabel = new JLabel("Contraseña:");
         userField = new JTextField(20);
         passwordField = new JPasswordField(20);
-        emojiButton = new JButton();
+        emojiButton = new JButton("Inicio");
 
-      
+       
 
         emojiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
