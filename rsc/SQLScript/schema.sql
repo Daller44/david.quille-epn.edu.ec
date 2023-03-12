@@ -4,6 +4,17 @@ Creacion de la tabla Localidad con datos
 30.ene.2k23
 Version 1.0
 */
+CREATE TABLE IF NOT EXISTS USUARIOS
+(    USUARIOS             VARCHAR(20) NOT NULL
+    ,CONTRASENA        VARCHAR(100)NOT NULL
+);
+------------------------------------------------------------------------
+INSERT INTO USUARIOS   (USUARIOS, CONTRASENA )
+            VALUES      ('david.quille@epn.edu.ec', '8425d7aa5a697e5b7f5f7646b42bedca'); 
+INSERT INTO USUARIOS   (USUARIOS, CONTRASENA )
+            VALUES      ('profe', '81dc9bdb52d04dc20036dbd8313ed055');
+------------------------------------------------------------------------
+SELECT * FROM USUARIOS;
 
 DROP TABLE IF EXISTS COORDENADAS;
 

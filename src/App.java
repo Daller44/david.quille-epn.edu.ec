@@ -1,7 +1,8 @@
 import javax.swing.*;
+import BusinessLogic.*;
+import Framework.AppConfiguration;
 
-
-import Log.login;
+import BusinessLogic.login;
 
 
 public class App extends JFrame {

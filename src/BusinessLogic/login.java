@@ -1,7 +1,10 @@
-package Log;
-import javax.swing.*;
 
-import BusinessLogic.PasswordEncrypter;
+/**
+//      * David Alejandro Quille
+//      */
+package BusinessLogic;
+
+import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,12 +16,12 @@ public class login extends JFrame {
    
 
 
-    private JLabel userLabel, passwordLabel;
-    private JTextField userField;
-    private JPasswordField passwordField;
-    private JButton emojiButton;
-    private int loginAttempts = 0;
-    private final int MAX_LOGIN_ATTEMPTS = 3;
+    private JLabel dqUserJLabel, dqPassJLabel;
+    private JTextField dquserField;
+    private JPasswordField dqpassField;
+    private JButton dqemogiButton;
+    private int dqLoginT = 0;
+    private final int dqMax = 3;
 
     public login() {
         // Configurar la ventana
@@ -30,29 +33,29 @@ public class login extends JFrame {
 
 
         // Configurar los componentes de la interfaz gráfica
-        userLabel = new JLabel("Usuario:");
-        passwordLabel = new JLabel("Contraseña:");
-        userField = new JTextField(20);
-        passwordField = new JPasswordField(20);
-        emojiButton = new JButton("Inicio");
+        dqUserJLabel = new JLabel("Usuario:");
+        dqPassJLabel = new JLabel("Contraseña:");
+        dquserField = new JTextField(20);
+        dqpassField = new JPasswordField(20);
+        dqemogiButton = new JButton("Inicio");
 
        
 
-        emojiButton.addActionListener(new ActionListener() {
+        dqemogiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                login1();
+                daLogin1();
             }
         });
 
         // Configurar el panel y agregar los componentes
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 2));
-        panel.add(userLabel);
-        panel.add(userField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
+        panel.add(dqUserJLabel);
+        panel.add(dquserField);
+        panel.add(dqPassJLabel);
+        panel.add(dqpassField);
         panel.add(new JLabel(""));
-        panel.add(emojiButton);
+        panel.add(dqemogiButton);
         panel.setBackground(Color.white);
 
         // Agregar el panel a la ventana
@@ -60,9 +63,9 @@ public class login extends JFrame {
         setVisible(true);
     }
 
-    private void login1() {
-        String user = userField.getText();
-        String password = new String(passwordField.getPassword());
+    private void daLogin1() {
+        String user = dquserField.getText();
+        String password = new String(dqpassField.getPassword());
         String encryptedPassword = PasswordEncrypter.encrypt(password); // Encriptar la contraseña ingresada
     
         // Verificar las credenciales en una fuente de datos
@@ -71,8 +74,8 @@ public class login extends JFrame {
             JOptionPane.showMessageDialog(this, "Iniciando sesión");
             dispose(); // cerrar la ventana
         } else {
-            loginAttempts++;
-            if (loginAttempts == MAX_LOGIN_ATTEMPTS) {
+            dqLoginT++;
+            if (dqLoginT == dqMax) {
                 JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. La aplicación se cerrará.");
                 dispose(); // cerrar la ventana
             } else {
