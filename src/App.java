@@ -10,7 +10,7 @@ public class App extends JFrame {
         new App();
     }
 
-    
+
     private JLabel userLabel, passwordLabel;
     private JTextField userField;
     private JPasswordField passwordField;
@@ -59,12 +59,13 @@ public class App extends JFrame {
     }
 
     private void login() {
-        String user = userField.getText();
-        String password = new String(passwordField.getPassword());
+    String user = userField.getText();
+    String password = new String(passwordField.getPassword());
 
-       // Verificar las credenciales
-       if (user.equals("usuario") && password.equals("contraseña")) {
-        JOptionPane.showMessageDialog(this, "Iniciando Seio");
+    // Verificar las credenciales
+    if ((user.equals("usuario1") && password.equals("contraseña1")) ||
+            (user.equals("usuario2") && password.equals("contraseña2"))) {
+        JOptionPane.showMessageDialog(this, "Iniciando Seion");
         dispose(); // cerrar la ventana
     } else {
         loginAttempts++;
@@ -76,5 +77,6 @@ public class App extends JFrame {
         }
     }
 }
+
     
 }
