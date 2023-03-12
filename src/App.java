@@ -63,8 +63,8 @@ public class App extends JFrame {
     String password = new String(passwordField.getPassword());
 
     // Verificar las credenciales
-    if ((user.equals("usuario1") && password.equals("contraseña1")) ||
-            (user.equals("usuario2") && password.equals("contraseña2"))) {
+    if ((user.equals("david.quille@epn.edu.ec") && password.equals("1726718875")) ||
+            (user.equals("profe") && password.equals("1234"))) {
         JOptionPane.showMessageDialog(this, "Iniciando Seion");
         dispose(); // cerrar la ventana
     } else {
